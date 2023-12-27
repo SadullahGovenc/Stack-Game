@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StackGame : MonoBehaviour
 {
-    public Color32[] gamColors = new Color32[4];
+    public Color32[] gameColors = new Color32[4];
     public Material stackMat;
 
     private const float BOUND_Size = 3.5f;
@@ -40,12 +40,28 @@ public class StackGame : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             theStack[i] = transform.GetChild(i).gameObject;
+            ColorMesh(theStack[i].GetComponent<MeshFilter>().mesh);
         }
+        stackIndex = transform.childCount - 1;
+
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void ColorMesh(Mesh mesh)
+    {
+        Vector3[] vertices =mesh.vertices;
+        Color32[] colors = new Color32[vertices.Length];
+
+        float f = Mathf.Sin(scoreCount * 0.25f);
+
+        for(int i = 0;i < vertices.Length; i++)
+        {
+            colors[i] = Lerp4(gameColors[0], gameColors[1], gameColors[2], gameColors[3]);
+        }
     }
 }
