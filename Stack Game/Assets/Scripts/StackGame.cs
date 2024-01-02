@@ -49,7 +49,17 @@ public class StackGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOver)
+            return;
+        if (Input.GetMouseButtonDown(0))
+        {
 
+        }
+        MoveTile();
+
+        // move The Stack
+
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, STACK_Moving_Speed * Time.deltaTime);
     }
 
     void ColorMesh(Mesh mesh)
@@ -63,21 +73,37 @@ public class StackGame : MonoBehaviour
         {
             colors[i] = Lerp4(gameColors[0], gameColors[1], gameColors[2], gameColors[3], f);
         }
+        mesh.colors32 = colors;
 
-        Color32 Lerp4(Color32 a, Color32 b, Color32 c, Color32 d , float t)
+    }  //COLORMESH
+
+    Color32 Lerp4(Color32 a, Color32 b, Color32 c, Color32 d, float t)
+    {
+        if (t < 0.33f)
         {
-            if (t < 0.33f)
-            {
-                return Color.Lerp(a, b, t / 0.33f);
-            }
-            else if (t < 0.66f)
-            {
-                return Color.Lerp(b, c, (t - 0.33f) / 0.33f);
-            }
-            else
-            {
-                return Color.Lerp(c, d, (t - 0.66f) / 0.66f);
-            }
+            return Color.Lerp(a, b, t / 0.33f);
+        }
+        else if (t < 0.66f)
+        {
+            return Color.Lerp(b, c, (t - 0.33f) / 0.33f);
+        }
+        else
+        {
+            return Color.Lerp(c, d, (t - 0.66f) / 0.66f);
+        }
+    } // LERP4
+
+    void MoveTile()
+    {
+        tileTransition += Time.deltaTime * tileSpeed;
+        if (isMovingX)
+        {
+            theStack[stackIndex].transform.localPosition = new Vector3(Mathf.Sin(tileTransition) * BOUND_Size, scoreCount, secondaryPosition);
+        }
+        else
+        {
+            theStack[stackIndex].transform.localPosition = new Vector3(secondaryPosition, scoreCount, Mathf.Sin(tileTransition) * BOUND_Size);
         }
     }
-}
+
+} // CLASS
