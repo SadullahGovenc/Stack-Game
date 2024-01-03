@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: StackMat
-  m_Shader: {fileID: 4800000, guid: c4f8cc057aaf94231b6df53f509c9217, type: 3}
+  m_Shader: {fileID: 4800000, guid: cb69ae8a41b5a564d970ad1038ebd82c, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

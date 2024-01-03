@@ -992,7 +992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c21b5e70088ed94589a991a9d6e1104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gamColors:
+  gameColors:
   - serializedVersion: 2
     rgba: 16769297
   - serializedVersion: 2
@@ -1001,7 +1001,7 @@ MonoBehaviour:
     rgba: 16454760
   - serializedVersion: 2
     rgba: 8854271
-  stackMat: {fileID: 2100000, guid: e6935d019d7d048679085948171fe22b, type: 2}
+  stackMat: {fileID: 2100000, guid: bc8894a3d4bb17646aa322cb1bf64587, type: 2}
 --- !u!1 &1260421102
 GameObject:
   m_ObjectHideFlags: 0
